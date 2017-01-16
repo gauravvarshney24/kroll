@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<div class="navbar-fixed-top" role="navigation">
+		<div class="contentHeader" style="text-align: center;">
+			<div class="container">
+					<div class="row" style="margin-top: 5px;">
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+						
+							Hi 
+							<span style="font-size: x-large;" data-ng-if="!login.person.fullName">
+								{{login.loginId}}
+							</span>
+							<span style="font-size: x-large;">
+								{{login.person.fullName}}
+							</span>						
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<a href="#!/shoppingCart" class="pull-right">
+								<span class="glyphicon  glyphicon-shopping-cart gi-3x glyphicon-inverse"></span>
+								 <span class="badge badge-notify" style="background-color: red;">
+								 	{{numberOfItemsInCart}}
+							 	</span>
+						 	</a>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<br><br><br><br>
+	<div class="" data-ng-init="loadProducts();">
+		<ul class="list-group" style="background-color: silver;">
+			<li class="list-group-item panel panel-body" data-ng-repeat="product in products" style="margin: 5px;">
+				<!-- Product List -->
+				<div class="">
+					<div class="row" data-ng-click="showItems = !showItems">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<img class="img-responsive"
+								data-ng-src="{{baseUrl}}productImage/findByProductId/{{product.id}}"
+								alt="">
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							<span style="font-size: xx-large;">
+								{{product.name}}
+							</span>
+							{{product.description}}
+						</div>
+					</div>
+				</div>
+				<!-- Item List -->
+				<br>
+				<div id="itemlist{{product.id}}" data-ng-hide="showItems">
+					 <div class="row panel" data-ng-repeat="item in product.items" style="margin: 5px;">
+						<div class="row panel panel-body">
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 pull-left">
+								<div>
+									<span style="font-size: x-large;">
+										{{item.name}}
+									</span>
+									<span class="glyphicon  glyphicon-ok gi-1x"
+											style="margin-right: 15px;"
+											data-ng-if="item.selected == true">
+									</span>										
+									<span class="pull-right" style="font-size: x-large;">
+										{{item.price}} Rs.
+									</span>	
+								</div>
+								<p>
+									{{item.description}}
+								</p>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								<img class="img-responsive pull-right" 
+									data-ng-src="{{baseUrl}}productImage/findByProductId/{{item.id}}"
+									alt="">
+							</div>
+						</div>
+						<div class="panel panel-body">
+							<div class="row">
+								<span class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+								</span>
+								<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+									<button class="btn btn-primary pull-right" 
+											style="margin-right: 15px;"
+											data-ng-if="item.selected == false"
+											data-ng-click="addItem(item.id);">Add</button>		
+								</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

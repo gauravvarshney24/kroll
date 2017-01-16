@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Shopping Cart</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	<div class="navbar-fixed-top" role="navigation">
+		<div class="contentHeader" style="text-align: center;">
+			<div class="container">
+					<div class="row" style="margin-top: 5px;">
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<span style="font-size: x-large;">Hi {{login.loginId}}</span>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<a href="#!/shoppingCart" class="pull-right">
+								<span class="glyphicon  glyphicon-shopping-cart gi-3x glyphicon-inverse"></span>
+								 <span class="badge badge-notify" style="background-color: red;">
+								 	{{numberOfItemsInCart}}
+							 	</span>
+						 	</a>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<br></br><br></br>
+	<div class="container-fluid">
+		 <div class="panel panel-body" data-ng-repeat="item in shoppingCart.orderItems" style="margin: 5px;">
+			<div class="row panel">
+				<span class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+					<img class="img-responsive" 
+						data-ng-src="{{baseUrl}}productImage/findByProductId/{{item.item.id}}"
+						alt=""/>
+				</span>
+				<div style="padding: 2px;">
+					<span class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+						<span style="font-size: x-large;">{{item.item.name}}</span>
+						<br>
+						<span style="">
+							{{item.item.price}} X {{item.qty}} = {{item.totalAmount}} Rs.
+						</span>
+					</span>
+					<span class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pull-right">
+						<span>
+							<button class="btn btn-default glyphicon glyphicon-minus gi-1x"
+									data-ng-click="decreaseQuantity(item);"></button>
+							&nbsp;
+						  	<span id="{{item.id}}+Qty" style="font-size: x-large;">{{item.qty}}</span>
+						  	&nbsp;
+						  	<button class="btn btn-default glyphicon glyphicon-plus gi-1x" 
+									data-ng-click="increaseQuantity(item);"></button>
+						  	&nbsp;
+						  	<button class="btn btn-default glyphicon glyphicon-remove gi-1x pull-right"
+						  			style="color: red;"
+									data-ng-click="increaseQuantity(item);"></button>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<br><br>
+		<div class="visible-md-block visible-lg-block" style="text-align: center;">
+			<a href="#!/order">
+				<span class="btn btn-primary">Make Order</span>
+			</a>
+		</div>
+	</div>
+	
+	
+	<div class="navbar-fixed-bottom visible-sm-block visible-xs-block" role="navigation">
+		<a href="#!/order">
+			<span class="btn btn-primary" style="width: 100%;">Make Order</span>
+		</a>
+	</div>
+		
+	
+</body>
+</html>

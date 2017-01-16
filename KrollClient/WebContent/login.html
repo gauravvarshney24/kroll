@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+	.body{
+		background-color: black;
+	}
+</style>
+</head>
+<body>
+	<div class="navbar-fixed-top" role="navigation">
+		<div class="contentHeader"
+			style="text-align: center;">
+			<h3>KRoll</h3>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+		<form class="form" role="form" data-ng-submit="doLogin();">
+			<div style="padding: 20px; margin: 20px;">
+				<div class="alert alert-info"  role="alert" data-ng-show="showAlert">
+					{{msg}}
+				</div>
+				<input type="tel" class="form-control" placeholder="Enter your mobile number" 
+						data-ng-model="login.loginId"/>		 
+				<br>
+				<div style="text-align: right;">
+					<input type="submit" value="Next" class="btn btn-primary">
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
